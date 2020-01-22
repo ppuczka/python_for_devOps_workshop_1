@@ -1,0 +1,18 @@
+One of Python’s most powerful features is its 
+ability to manipulate text and files. In the DevOps 
+world, you are continually parsing, searching, and 
+changing the text in files, whether you’re searching 
+application logs or propagating configuration files. 
+Files are a means of persisting the state of your data, 
+code, and configuration; they are how you look back at 
+what happened in logs and how you control what happens with 
+configuration. With Python, you can create, read, and change
+files and text in the code that you can use repeatedly. 
+Automating these tasks is indeed one aspect of modern DevOps 
+that separates it from traditional system administration. 
+Rather than keeping a set of instructions that you have to
+follow manually, you can write code. This diminishes your 
+chances of missing steps or doing them out of order. If you are 
+confident that your system uses the same steps every time you 
+run it, you can have greater understanding and confidence in the 
+process.
