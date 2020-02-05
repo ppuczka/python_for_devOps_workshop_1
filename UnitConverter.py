@@ -1,5 +1,5 @@
 # this is simple unit converter 
-# add try-catch 
+# add try-catch - work 
 # add file writting 
 # make it object orienter 
 # work over errors in kg converter 
@@ -27,33 +27,42 @@ def weight_converter(input_weight, output_weight):
 
 
 def simple_converter():
-    converter = input("""Choose converter: 
-                    1. Celsius to Farenheit
-                    2. Farenheit to Celsius
-                    3. Kilogram converter
-                    Type 1/2/3 or exit() to end program: """)    
-    while converter != "exit()":
-        if converter == "1":
-            c_value = int(input("Type celsius value: "))
-            print(celsius_to_farenheit(c_value))
-        elif converter == "2":
-            f_value = int(input("Type farenheit value: "))
-            print(farenheit_to_celsius(f_value))
-        elif converter == "3":
-            unit = input("Podaj jednostkę: ")
-            unit_value = int(input("Podaj ilość kilogramów: ")) 
-            result = kilogram_converter(unit, unit_value)
-            print(result)
-        elif converter == "exit()":
-            print("Goodbye :)")
-            pass
-        else:
-            print("Wrong choice \n")
-            converter = input("""Choose converter: 
-                    1. Celsius to Farenheit
-                    2. Farenheit to Celsius
-                    3. Kilogram converter
-                    Type 1/2/3 or exit() to end program: """) 
+    try:
+        converter = input("""Choose converter: 
+                        1. Celsius to Farenheit
+                        2. Farenheit to Celsius
+                        3. Kilogram converter
+                        Type 1/2/3 or exit() to end program: """)    
+        while converter != "exit()":
+            if converter == "1":
+                c_value = int(input("Type celsius value: "))
+                print(celsius_to_farenheit(c_value))
+            elif converter == "2":
+                f_value = int(input("Type farenheit value: "))
+                print(farenheit_to_celsius(f_value))
+            elif converter == "3":
+                unit = input("Podaj jednostkę: ")
+                unit_value = int(input("Podaj ilość kilogramów: ")) 
+                result = kilogram_converter(unit, unit_value)
+                print(result)
+            elif converter == "exit()":
+                print("Goodbye :)")
+                pass
+            else:
+                print("Wrong choice \n")
+                converter = input("""Choose converter: 
+                        1. Celsius to Farenheit
+                        2. Farenheit to Celsius
+                        3. Kilogram converter
+                        Type 1/2/3 or exit() to end program: """) 
+    except ValueError:
+        print("Could not convert data to an integer.")
+        #not working 
+        if (input("Do You want to try again ? Y or N: ")).upper == "Y":
+            simple_converter()
+        
+        
+        
 
 simple_converter()
     
