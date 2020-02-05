@@ -1,13 +1,31 @@
 # this is simple unit converter 
 
-weight_units = {
-    1 : "miligram"
-    2 : "gram"
-    3 : "kilogram"
-    4 : "ton"
-    5 : "ounce"
-    7 : "pound"
-    8 : "stone"
-    9 : "quater"
-    10: "long ton"
-}
+def kilogram_converter(unit, x):
+    units = {
+    "miligram" : lambda x: x * 0.0001,
+    "gram" : lambda x: x * 0.001,
+    "kilogram" : lambda x: x * 1,
+    "ton" : lambda x: x * 10000,
+    "ounce" : lambda x: x * 0.028,
+    "pound" : lambda x: x * 0.453,
+    "quater" : lambda x: x * 12.70,
+    "long ton" : lambda x: x * 1016
+    }
+    return units.get(unit, "Not found"), x
+
+def celsius_to_farenheit(c_value):
+    return (c_value * 1.8) + 32
+
+def farenheit_to_celsius(f_value):
+    return (f_value - 32) * 1.8 
+
+def weight_converter(input_weight, output_weight):
+    weight_unit
+    
+    
+unit = input("Podaj jednostkę: ")
+unit_value = input("Podaj ilość kilogramów: ") 
+   
+result = kilogram_converter(unit, unit_value)
+print(result)
+    
