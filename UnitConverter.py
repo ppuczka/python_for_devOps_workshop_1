@@ -1,8 +1,8 @@
+from ConverterHistory import *
 # this is simple unit converter 
-# add try-catch - work 
 # add file writting 
 # make it object orienter 
-# work over errors in kg converter 
+
 def kilogram_converter(unit, x):
     units = {
     "miligram" : lambda x: x / 0.0001,
@@ -27,6 +27,8 @@ def weight_converter(input_weight, output_weight):
 
 
 def simple_converter():
+    history_file_path = "converter_history.txt"
+    history = ConverterHistory(history_file_path)
     try:
         converter = input("""Choose converter: 
                         1. Celsius to Farenheit
@@ -37,12 +39,13 @@ def simple_converter():
             if converter == "1":
                 c_value = int(input("Type celsius value: "))
                 print(celsius_to_farenheit(c_value))
+                history.append_to_history(str(c_value))
             elif converter == "2":
                 f_value = int(input("Type farenheit value: "))
                 print(farenheit_to_celsius(f_value))
             elif converter == "3":
-                unit = input("Podaj jednostkę: ")
-                unit_value = int(input("Podaj ilość kilogramów: ")) 
+                unit = input("Type unit to convert to: ")
+                unit_value = int(input("Type number of kilograms: ")) 
                 result = kilogram_converter(unit, unit_value)
                 print(result)
             elif converter == "exit()":
@@ -56,13 +59,14 @@ def simple_converter():
                         3. Kilogram converter
                         Type 1/2/3 or exit() to end program: """) 
     except ValueError:
-        print("Could not convert data to an integer.")
-        #not working 
-        if (input("Do You want to try again ? Y or N: ")).upper == "Y":
+        print("Could not user convert data to an integer.")
+
+    finally:
+        _ = input("Do You want to try again ? Y or N: ")
+        if (_.lower() == "Y".lower()):
             simple_converter()
-        
-        
-        
+        else:
+            "Goodbye!" 
 
 simple_converter()
     
