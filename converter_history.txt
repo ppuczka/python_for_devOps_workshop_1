@@ -49,3 +49,15 @@ Date: 07-02-2020 23:01:42:
             user entered value: 67 celsius  
             converted to: farenheit
             result: 152.60000000000002 
+Date: 07-02-2020 23:10:09:
+            user entered value: 38 farenheit  
+            converted to: celsius
+            result: 10.8 
+Date: 07-02-2020 23:10:13:
+            user entered value: 36 farenheit  
+            converted to: celsius
+            result: 7.2 
+Date: 07-02-2020 23:10:16:
+            user entered value: 30 farenheit  
+            converted to: celsius
+            result: -3.6 
