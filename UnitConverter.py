@@ -24,11 +24,19 @@ def farenheit_to_celsius(f_value):
 
 def weight_converter(input_weight, output_weight):
     weight_unit
+    
+def temperature_converter(entered_unit, result_unit, history):
+    entered_unit = "celsius"
+    result_unit = "farenheit"
+    c_value = int(input(f"Type {entered_unit} value: "))
+    f_value = celsius_to_farenheit(c_value)
+    print(f"Result: {f_value} {result_unit}")
+    history.append_to_history(str(c_value), str(f_value), entered_unit, result_unit)
 
 def simple_converter():
     history_file_path = "converter_history.txt"
     history = ConverterHistory(history_file_path)
-    
+
     try:
         
         converter = input("""Choose converter: 
@@ -40,13 +48,9 @@ def simple_converter():
         while converter != "exit()":
            
             if converter == "1":
-                entered_unit = "celsius"
-                result_unit = "farenheit"
-                c_value = int(input(f"Type {entered_unit} value: "))
-                f_value = celsius_to_farenheit(c_value)
-                print(f"Result: {f_value} {result_unit}")
-                history.append_to_history(str(c_value), str(f_value), entered_unit, result_unit)
-           
+                temperature_converter("celsius", "farenheit", history)
+            
+            
             elif converter == "2":
                 f_value = int(input("Type farenheit value: "))
                 print(farenheit_to_celsius(f_value))
