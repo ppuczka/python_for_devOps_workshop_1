@@ -21,9 +21,6 @@ def celsius_to_farenheit(c_value):
 
 def farenheit_to_celsius(f_value):
     return (f_value - 32) * 1.8 
-
-def weight_converter(input_weight, output_weight):
-    weight_unit
     
 def temperature_converter(entered_unit, result_unit, history):
     if (entered_unit == "celsius"):
@@ -63,7 +60,6 @@ def simple_converter():
            
             elif converter == "exit()":
                 print("Goodbye :)")
-                pass
            
             else:
                 print("Wrong choice \n")
