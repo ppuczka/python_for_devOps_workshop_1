@@ -23,61 +23,61 @@ def farenheit_to_celsius(f_value):
     return (f_value - 32) * 1.8 
     
 def temperature_converter(entered_unit, result_unit, history):
-    if (entered_unit == "celsius"):
-        entered_value = int(input(f"Type {entered_unit} value: "))
-        result_value = celsius_to_farenheit(entered_value)
-    else:
-        entered_value = int(input(f"Type {entered_unit} value: "))
-        result_value = farenheit_to_celsius(entered_value) 
-        
-    print(f"Result: {result_value} {result_unit}")
-    history.append_to_history(str(entered_value), str(result_value), entered_unit, result_unit)
+    try:
+    
+        if (entered_unit == "celsius"):
+            entered_value = int(input(f"Type {entered_unit} value: "))
+            result_value = celsius_to_farenheit(entered_value)
+        else:
+            entered_value = int(input(f"Type {entered_unit} value: "))
+            result_value = farenheit_to_celsius(entered_value) 
+            
+        print(f"Result: {result_value} {result_unit}")
+        history.append_to_history(str(entered_value), str(result_value), entered_unit, result_unit)
+    
+    except ValueError:
+        print("Could not user convert data to an integer.")
+
+    # finally:
+    #     _ = input("Do You want to try again ? Y or N: ")
+    #     if (_.lower() == "Y".lower()):
+    #         simple_converter()
+    #     else:
+    #         "Goodbye!" 
 
 def simple_converter():
     history_file_path = "converter_history.txt"
     history = ConverterHistory(history_file_path)
 
-    try:
-        
-        converter = input("""Choose converter: 
-                        1. Celsius to Farenheit
-                        2. Farenheit to Celsius
-                        3. Kilogram converter
-                        Type 1/2/3 or exit() to end program: """)    
-        
-        while converter != "exit()":
-            if converter == "1":
-                temperature_converter("celsius", "farenheit", history)          
-            
-            elif converter == "2":
-                temperature_converter("farenheit", "celsius", history)
-           
-            elif converter == "3":
-                unit = input("Type unit to convert to: ")
-                unit_value = int(input("Type number of kilograms: ")) 
-                result = kilogram_converter(unit, unit_value)
-                print(result)
-           
-            elif converter == "exit()":
-                print("Goodbye :)")
-           
-            else:
-                print("Wrong choice \n")
-                converter = input("""Choose converter: 
-                        1. Celsius to Farenheit
-                        2. Farenheit to Celsius
-                        3. Kilogram converter
-                        Type 1/2/3 or exit() to end program: """) 
+    converter = input("""Choose converter: 
+                    1. Celsius to Farenheit
+                    2. Farenheit to Celsius
+                    3. Kilogram converter
+                    Type 1/2/3 or exit to end program: """)    
     
-    except ValueError:
-        print("Could not user convert data to an integer.")
-
-    finally:
-        _ = input("Do You want to try again ? Y or N: ")
-        if (_.lower() == "Y".lower()):
-            simple_converter()
+    while converter != "exit":
+        if converter == "1":
+            temperature_converter("celsius", "farenheit", history)          
+        
+        elif converter == "2":
+            temperature_converter("farenheit", "celsius", history)
+        
+        elif converter == "3":
+            unit = input("Type unit to convert to: ")
+            unit_value = int(input("Type number of kilograms: ")) 
+            result = kilogram_converter(unit, unit_value)
+            print(result)
+        
+        elif converter == "exit":
+            print("Goodbye :)")
+            break
         else:
-            "Goodbye!" 
+            print("Wrong choice \n")
+            converter = input("""Choose converter: 
+                    1. Celsius to Farenheit
+                    2. Farenheit to Celsius
+                    3. Kilogram converter
+                    Type 1/2/3 or exit() to end program: """) 
 
 simple_converter()
     
