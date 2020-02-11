@@ -1,4 +1,5 @@
 from ConverterHistory import *
+from CurrencyConverter import *
 # this is simple unit converter 
 # add file writting 
 # make it object orienter 
@@ -38,22 +39,23 @@ def temperature_converter(entered_unit, result_unit, history):
     except ValueError:
         print("Could not user convert data to an integer.")
 
-    # finally:
-    #     _ = input("Do You want to try again ? Y or N: ")
-    #     if (_.lower() == "Y".lower()):
-    #         simple_converter()
-    #     else:
-    #         "Goodbye!" 
+def convert_currency(from_currency_code, to_currency_code, value, converter):
+    currency_rates = converter.get_latest_currency_rate(from_currency_code.upper())
+    rate = currency_rates.get(to_currency_code.upper(), "Not found") 
+    converted_currency = round(value * rate, 2)
+    print(f"{value} {from_currency_code.upper()} equals {converted_currency} {to_currency_code.upper()}")
 
 def simple_converter():
     history_file_path = "converter_history.txt"
     history = ConverterHistory(history_file_path)
+    currency_con = CurrencyConverter()
 
     converter = input("""Choose converter: 
                     1. Celsius to Farenheit
                     2. Farenheit to Celsius
                     3. Kilogram converter
-                    Type 1/2/3 or exit to end program: """)    
+                    4. Currency converter
+                    Type 1/2/3/4 or exit to end program: """)    
     
     while converter != "exit":
         if converter == "1":
@@ -67,6 +69,14 @@ def simple_converter():
             unit_value = int(input("Type number of kilograms: ")) 
             result = kilogram_converter(unit, unit_value)
             print(result)
+        
+        elif converter == "4":
+            currency_from = input("Type currency to convert from USD/EUR/PLN: ")
+            currency_to = input("Type currency to convert to USD/EUR/PLN: ")
+            currency_value = int(input("Type cash value: ")) 
+            convert_currency(currency_from, currency_to, currency_value, currency_con)
+
+
         
         elif converter == "exit":
             print("Goodbye :)")
