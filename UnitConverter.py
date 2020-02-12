@@ -39,11 +39,12 @@ def temperature_converter(entered_unit, result_unit, history):
     except ValueError:
         print("Could not user convert data to an integer.")
 
-def convert_currency(from_currency_code, to_currency_code, value, converter):
+def convert_currency(from_currency_code, to_currency_code, value, converter, history):
     currency_rates = converter.get_latest_currency_rate(from_currency_code.upper())
     rate = currency_rates.get(to_currency_code.upper(), "Not found") 
     converted_currency = round(value * rate, 2)
     print(f"{value} {from_currency_code.upper()} equals {converted_currency} {to_currency_code.upper()}")
+    history.append_to_history(str(value), str(converted_currency), from_currency_code.upper(), to_currency_code.upper() )
 
 def simple_converter():
     history_file_path = "converter_history.txt"
@@ -74,10 +75,8 @@ def simple_converter():
             currency_from = input("Type currency to convert from USD/EUR/PLN: ")
             currency_to = input("Type currency to convert to USD/EUR/PLN: ")
             currency_value = int(input("Type cash value: ")) 
-            convert_currency(currency_from, currency_to, currency_value, currency_con)
+            convert_currency(currency_from, currency_to, currency_value, currency_con, history)
 
-
-        
         elif converter == "exit":
             print("Goodbye :)")
             break
@@ -87,7 +86,7 @@ def simple_converter():
                     1. Celsius to Farenheit
                     2. Farenheit to Celsius
                     3. Kilogram converter
-                    Type 1/2/3 or exit() to end program: """) 
-
+                    4. Currency converter
+                    Type 1/2/3/4 or exit to end program: """)    
 simple_converter()
     

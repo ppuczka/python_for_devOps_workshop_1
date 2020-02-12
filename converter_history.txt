@@ -101,3 +101,7 @@ Date: 08-02-2020 12:36:27:
             user entered value: 13 farenheit  
             converted to: celsius
             result: -34.2 
+Date: 12-02-2020 20:43:02:
+            user entered value: 10 USD  
+            converted to: PLN
+            result: 38.99 
